@@ -1,13 +1,18 @@
 import React from 'react';
 
-const Player = () => {
+const Player = ({ currentSong, pause, start, paused, next, forward }) => {
     return (
         <div id='player-container'>
             <div id='player-controls'>
-                <div class='row center'>
-                    <i class='fa fa-step-backward'></i>
-                    <i class='fa fa-pause-circle'></i>
-                    <i class='fa fa-step-forward'></i>
+                <div className='row center'>
+                    <i className='fa fa-step-backward' onClick={ ()=> forward()}></i>
+                    { currentSong.id && !paused ?
+                        <i className='fa fa-pause-circle' onClick= { () => pause() }></i>:
+                        <i className='fa fa-play-circle' onClick={()=> start(currentSong)}></i>
+                         
+                    }
+                    
+                    <i className='fa fa-step-forward' onClick={()=> next()}></i>
                 </div>
             </div>
         </div>

@@ -1,10 +1,12 @@
 import React from 'react';
 import Album from './Album';
 
-const Albums = () => {
+const Albums = ({ albums, selectAlbum }) => {
     return (
         <div id='albums' className='row wrap'>
-            <Album />
+            { albums.map( album => {
+                return <Album key = { album.id } album = { album } selectAlbum = { selectAlbum }/>
+            })}
         </div>
     )
 }
